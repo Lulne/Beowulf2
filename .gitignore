@@ -1,0 +1,27 @@
+# PyCharm files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Compiled files
+*.pyc
+__pycache__/
+
+# Distribution directories
+dist/
+build/
+*.egg-info/
+
+# Environments
+env/
+venv/
+.venv/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Miscellaneous
+.DS_Store

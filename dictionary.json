@@ -1,0 +1,50 @@
+{
+ "\u65e5\u672c\u8a9e": {
+  "english": "japanese",
+  "correct_guesses": 1,
+  "incorrect_guesses": 0,
+  "attempts": 3,
+  "last_seen": "2023-03-14",
+  "last_correct_guess": "2023-03-13"
+ },
+ "\u30bc\u30ed": {
+  "english": "zero",
+  "correct_guesses": 0,
+  "incorrect_guesses": 0,
+  "attempts": 0,
+  "last_seen": "1970-01-01",
+  "last_correct_guess": "1970-01-01"
+ },
+ "\u4e00": {
+  "english": "one",
+  "correct_guesses": 3,
+  "incorrect_guesses": 0,
+  "attempts": 6,
+  "last_seen": "2023-03-14",
+  "last_correct_guess": "2023-03-14"
+ },
+ "\u4e8c": {
+  "english": "two",
+  "correct_guesses": 0,
+  "incorrect_guesses": 0,
+  "attempts": 0,
+  "last_seen": "1970-01-01",
+  "last_correct_guess": "1970-01-01"
+ },
+ "\u3042\u304b\u3093": {
+  "english": "akan",
+  "correct_guesses": 0,
+  "incorrect_guesses": 0,
+  "attempts": 0,
+  "last_seen": "1970-01-01",
+  "last_correct_guess": "1970-01-01"
+ },
+ "\u3067\u3063\u304b\u3044": {
+  "english": "huge",
+  "correct_guesses": 0,
+  "incorrect_guesses": 0,
+  "attempts": 0,
+  "last_seen": "1970-01-01",
+  "last_correct_guess": "1970-01-01"
+ }
+}
