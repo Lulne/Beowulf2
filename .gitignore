@@ -1,3 +1,11 @@
+# Hidden
+googleAPI_secret.json
+keys.txt
+
+# Temporary files
+input.wav
+output.wav
+
 # PyCharm files
 .idea/
 *.iml
