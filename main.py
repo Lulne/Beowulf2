@@ -1,3 +1,4 @@
+import multiprocessing
 import os
 import random
 import subprocess
@@ -18,6 +19,10 @@ import datetime
 import speech_recognition as sr
 import gspread
 import tkinter as tk
+from tkinter import Tk, Canvas, NW
+import pyaudio
+from PIL import Image, ImageTk, ImageEnhance
+import numpy as np
 
 # region instructions
 
@@ -36,9 +41,11 @@ command_list = "'help list' - displays this \n" \
 
 # region CONFIG
 beowulf_generates_audio = True  # when enabled beowulf speaks back
-speakerID = 24  # F: 3 6 14 24 25 29? M: 11 13     #ASMR WTF?? 19
+use_widget = True
+use_intro = True
+speakerID = 24
 
-_trigger_word = "beowulf"  # trigger word to start talking to the A.I.
+_trigger_word = "beo"  # trigger word to start talking to the A.I.
 _timeout = 2  # int for timeout while listening for keyword
 _command_word = "command"  # if word is in recorded words, respawn with a preset (i.e. if asking for dietary info we wouldn't want to ask openAI for it)
 
@@ -228,6 +235,7 @@ COMMON_FOODS = {
     "None": {"calories": 0, "protein": 0, "carbs": 0, "fat": 0, "fiber": 0},
     "Banana": {"calories": 110, "protein": 1, "carbs": 28, "fat": 0, "fiber": 3},
     "Apple": {"calories": 95, "protein": 1, "carbs": 25, "fat": 0, "fiber": 4},
+    "Salad+half container of honeydew": {"calories": 131, "protein": 4.1, "carbs": 24, "fat": 0, "fiber": 3},
     # Add more foods here
 }
 
@@ -240,7 +248,6 @@ def get_current_intake():
     try:
         row_index = dates.index(today)
     except ValueError:
-        print("No data found for today.")
         current_intake.update({nutrient: 0 for nutrient in DAILY_VALUES})
         return
 
@@ -612,7 +619,6 @@ def play_intro():
 
 
 # endregion
-
 def run_time_based():
     global last_task_done
     global currently_speaking
@@ -642,6 +648,10 @@ def run_user_input():
         time.sleep(1)
 
 
+def run_widget():
+    subprocess.run(['python', 'Widget.py'])
+
+
 input_thread = threading.Thread(target=run_user_input)
 input_thread.daemon = True
 input_thread.start()
@@ -650,7 +660,14 @@ time_thread = threading.Thread(target=run_time_based)
 time_thread.daemon = True
 time_thread.start()
 
-play_intro()
+if use_intro:
+    pass
+    # play_intro()
+if use_widget:
+    #subprocess.Popen(['python', 'Widget.py'])
+    widget_thread = threading.Thread(target=run_widget)
+    widget_thread.daemon = True
+    widget_thread.start()
 
 with mic as source:
     r.adjust_for_ambient_noise(source)
@@ -659,7 +676,6 @@ with mic as source:
     while True:
         if waiting:
             continue
-
         i += 1
         try:
             audio = r.listen(source, timeout=timeout)
