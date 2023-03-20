@@ -49,7 +49,7 @@ _trigger_word = "beo"  # trigger word to start talking to the A.I.
 _timeout = 2  # int for timeout while listening for keyword
 _command_word = "command"  # if word is in recorded words, respawn with a preset (i.e. if asking for dietary info we wouldn't want to ask openAI for it)
 
-_ai_desc = "You are a friendly friendly anime girl themed assistant"
+_ai_desc = "You are an assistant"
 _ai_prompt1 = "Be somewhat succinct"
 max_completion_tokens = 100  # max number of completion tokens
 
